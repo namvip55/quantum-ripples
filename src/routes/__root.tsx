@@ -1,4 +1,5 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { AuthProvider } from "@/hooks/use-auth";
 
 import appCss from "../styles.css?url";
 
@@ -29,14 +30,14 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Ripples in the Infinite Stream" },
+      { name: "description", content: "Một blog cá nhân về Bất tử lượng tử, Ý thức, Cái tôi và Tỉnh thức." },
+      { name: "author", content: "Nguyễn Nam Thành" },
+      { property: "og:title", content: "Ripples in the Infinite Stream" },
+      { property: "og:description", content: "Suy tư về Bất tử lượng tử, Ý thức và Tỉnh thức." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:site", content: "@namvip55" },
     ],
     links: [
       {
@@ -82,7 +83,6 @@ function RootShell({ children }: { children: React.ReactNode }) {
   );
 }
 
-import { AuthProvider } from "@/hooks/use-auth";
 
 function RootComponent() {
   return (
