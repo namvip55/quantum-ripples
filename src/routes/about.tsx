@@ -91,12 +91,12 @@ function AboutPage() {
           <p className="text-lg text-foreground">
             <span className="font-medium mr-2">Github:</span>
             <a
-              href="https://github.com/namvip55"
+              href="https://github.com/namvip55/quantum-ripples"
               target="_blank"
               rel="noreferrer"
               className="font-medium text-accent hover:underline"
             >
-              https://github.com/namvip55
+              https://github.com/namvip55/quantum-ripples
             </a>
           </p>
         </div>
