@@ -1,106 +1,305 @@
 <div align="center">
-  <h1>🌊 Quantum Ripples | In the Infinite Stream</h1>
-  <p><em>"Chính bởi vì tồn tại mà tôi biết tôi tồn tại, cho nên ta luôn tồn tại."</em></p>
 
-  <p>
-    <a href="https://react.dev/"><img src="https://img.shields.io/badge/React-19-087ea4?logo=react&logoColor=white" alt="React 19" /></a>
-    <a href="https://tanstack.com/start"><img src="https://img.shields.io/badge/TanStack_Start-Beta-ec5990?logo=react&logoColor=white" alt="TanStack Start" /></a>
-    <a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/Tailwind_CSS-v4-06B6D4?logo=tailwindcss&logoColor=white" alt="Tailwind CSS v4" /></a>
-    <a href="https://supabase.com/"><img src="https://img.shields.io/badge/Supabase-DB-3ECF8E?logo=supabase&logoColor=white" alt="Supabase" /></a>
-</p>
+  <!-- LOGO / FAVICON -->
+  <img src="public/favicon.svg" alt="Quantum Ripples Logo" width="120" height="120" />
+
+  <br /><br />
+
+  # 🌊 Quantum Ripples
+
+  ### *Ripples in the Infinite Stream*
+
+  <br />
+
+  > *「Chính bởi vì tồn tại mà tôi biết tôi tồn tại, cho nên ta luôn tồn tại.」*
+
+  <br />
+
+  Một blog triết học cá nhân — nơi giao thoa giữa **Vật lý Lượng tử**, **Triết học Ý thức** và **Nghệ thuật thị giác**.  
+  Được xây dựng với ngăn xếp công nghệ hiện đại nhất, phục vụ trải nghiệm **deep reading** thuần khiết.
+
+  <br />
+
+  <a href="https://react.dev/"><img src="https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=white" alt="React 19" /></a>
+  <a href="https://tanstack.com/start"><img src="https://img.shields.io/badge/TanStack_Start-SSR-EF4444?style=for-the-badge&logo=reactquery&logoColor=white" alt="TanStack Start" /></a>
+  <a href="https://vitejs.dev/"><img src="https://img.shields.io/badge/Vite-7.3-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" /></a>
+  <a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/Tailwind_CSS-v4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS v4" /></a>
+  <a href="https://supabase.com/"><img src="https://img.shields.io/badge/Supabase-Auth_&_DB-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white" alt="Supabase" /></a>
+
+  <br /><br />
+
+  [Xem Demo](https://quantum-ripples.pages.dev) · [Báo lỗi](https://github.com/namvip55/quantum-ripples/issues) · [Đề xuất tính năng](https://github.com/namvip55/quantum-ripples/issues)
+
 </div>
+
+<br />
 
 ---
 
-## 🌌 Về Dự Án (About the Project)
+<br />
 
-**Quantum Ripples (Gợn sóng Lượng tử)** là một không gian kỹ thuật số yên bình – một blog triết học cá nhân được xây dựng dựa trên lý thuyết về **Bất tử lượng tử (Quantum Immortality)** và chiều sâu của tâm thức. 
+## 📸 Ảnh chụp Giao diện
 
-Nơi đây lưu giữ những dòng suy tưởng không đầu không cuối, những trải nghiệm nội tâm sâu sắc và các khái niệm về **Cái tôi & Sự tồn tại**. Giao diện website được thiết kế cực kỳ tối giản, tập trung hoàn toàn vào **Nghệ thuật Typography** và **Trải nghiệm Đọc Sâu (Deep Reading)**.
+> ⚠️ *Screenshots sẽ được cập nhật khi dự án hoàn thiện giao diện chính thức.*
 
+<br />
 
-## ✨ Tính năng Nổi bật (Features)
+## 🌌 Giới thiệu
 
-- 📖 **Trải nghiệm Đọc Sâu (Zen Mode):** Sử dụng phông chữ serif mang hơi hướng trí thức, phong cách tối giản (Minimalist design), loại bỏ hoàn toàn các yếu tố làm xao nhãng.
-- 🌊 **The Stream (Dòng Chảy):** Trình bày các suy nghĩ ngẫu nhiên, các đoạn nhật ký và suy tưởng theo một dòng thời gian liên tục.
-- 💬 **Không gian Thảo luận (Community):** Nơi những người đọc có thể đăng nhập tài khoản và cùng trao đổi về các vấn đề siêu hình.
-- 👤 **Hồ sơ Cá nhân (Profile):** Quản lý trạng thái, cập nhật thông tin và theo dõi lịch sử tương tác với những bộ óc đồng điệu khác.
-- ⚡ **Hiệu năng Tối đa:** Render từ máy chủ (SSR) với tốc độ chớp nhoáng, đảm bảo truyền tải cảm xúc và trải nghiệm người dùng hoàn hảo.
+**Quantum Ripples** không chỉ là một blog — đó là một **không gian kỹ thuật số tĩnh lặng**, nơi những suy tưởng về bản chất của thực tại được trải ra qua từng con chữ.
 
-## 🛠 Ngăn xếp Công nghệ (Tech Stack)
+Lấy cảm hứng từ lý thuyết **Bất tử Lượng tử (Quantum Immortality)** — ý tưởng rằng ý thức luôn tồn tại trong ít nhất một nhánh của đa vũ trụ — dự án này là nhật ký tư duy của một người đang lắng nghe dòng chảy bên trong chính mình.
 
-Dự án này là biểu tượng của sự kết hợp giữa **Triết học và Công nghệ hiện đại**. Sử dụng những bộ công cụ mạnh mẽ và tiên tiến nhất:
+### Triết lý Thiết kế
 
-### Frontend
-- **Framework:** [React 19](https://react.dev/) + [TanStack Start](https://tanstack.com/start) + [Vite](https://vitejs.dev/)
-- **Routing:** [TanStack Router](https://tanstack.com/router) (Type-safe & SSR-ready)
-- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
-- **UI Components:** [Radix UI](https://www.radix-ui.com/) + Lucide Icons + Shadcn
-- **Animation:** Embla Carousel (Sliders), Framer Motion / Animation-css
+| Nguyên tắc | Mô tả |
+|:---|:---|
+| 🧘 **Zen Mode** | Giao diện tối giản tuyệt đối, loại bỏ mọi thứ không cần thiết |
+| 📝 **Typography-first** | Serif font ([Lora](https://fonts.google.com/specimen/Lora)) cho nội dung, [Inter](https://fonts.google.com/specimen/Inter) cho UI — tách biệt rõ ràng giữa đọc và tương tác |
+| 🌊 **Fluid motion** | Chuyển trang mượt mà, hiệu ứng hover tinh tế, reading progress bar |
+| 🌙 **Dark-native** | Thiết kế từ nền tối, với palette màu được chọn lọc kỹ lưỡng |
 
-### Backend & Data
-- **Database & Auth:** [Supabase](https://supabase.com/) (Real-time DB, PostgreSQL, JWT Authentication)
-- **State Management:** [React Query v5](https://tanstack.com/query)
-- **Form Handling:** [React Hook Form](https://react-hook-form.com/) + Zod (Validation)
+<br />
 
-## 🚀 Hướng dẫn Cài đặt & Chạy cục bộ
+## ✨ Tính năng
 
-Làm theo các bước sau để chạy khởi chạy dự án trên môi trường của bạn:
+<table>
+  <tr>
+    <td width="50%">
 
-### 1. Yêu cầu Hệ thống
-- **Node.js** (Phiên bản v18 hoặc v20+ trở lên)
-- Git đã được cài đặt trên máy.
+### 📖 Blog & Bài luận
+Hệ thống blog đầy đủ với **dynamic routing** (`/blog/:slug`). Mỗi bài viết được trình bày trong layout đọc sâu tối ưu, kèm thanh tiến trình đọc (Reading Progress Bar).
 
-### 2. Thiết lập Môi trường
-Clone dự án về máy:
+  </td>
+    <td width="50%">
+
+### 🌊 The Stream
+Dòng chảy suy tưởng liên tục — những đoạn nhật ký ngắn, ghi chú triết học, suy nghĩ thoáng qua — được sắp xếp theo timeline. Mỗi gợn sóng là một khoảnh khắc tư duy.
+
+  </td>
+  </tr>
+  <tr>
+    <td width="50%">
+
+### 💬 Discussions
+Không gian cộng đồng để trao đổi về các vấn đề siêu hình. Người dùng có thể tạo chủ đề mới (`/discussions/new`), bình luận và phản hồi lẫn nhau.
+
+  </td>
+    <td width="50%">
+
+### 🔐 Auth & Profile
+Hệ thống xác thực qua **Supabase Auth** (Email / OAuth). Mỗi người dùng có trang hồ sơ cá nhân để quản lý thông tin và theo dõi lịch sử tương tác.
+
+  </td>
+  </tr>
+</table>
+
+<br />
+
+## 🛠 Ngăn xếp Công nghệ
+
+```
+┌──────────────────────────────────────────────────┐
+│                    FRONTEND                       │
+│                                                   │
+│  React 19 ─── TanStack Start ─── Vite 7.3        │
+│       │              │                            │
+│       │        TanStack Router                    │
+│       │        (File-based, SSR, Type-safe)       │
+│       │                                           │
+│  Tailwind CSS v4 ─── Radix UI ─── Lucide Icons   │
+│                                                   │
+├──────────────────────────────────────────────────┤
+│                  BACKEND & DATA                   │
+│                                                  │
+│  Supabase ──── PostgreSQL ──── JWT Auth           │
+│       │                                           │
+│  React Query v5 ─── React Hook Form ─── Zod      │
+│                                                   │
+└──────────────────────────────────────────────────┘
+```
+
+<details>
+<summary><b>📦 Danh sách đầy đủ Dependencies</b></summary>
+
+<br />
+
+| Thư viện | Phiên bản | Vai trò |
+|:---|:---:|:---|
+| `react` | `19.2` | UI Library |
+| `@tanstack/react-start` | `1.167` | Full-stack framework (SSR) |
+| `@tanstack/react-router` | `1.168` | Type-safe file-based routing |
+| `@tanstack/react-query` | `5.83` | Async state management |
+| `vite` | `7.3` | Build tool & dev server |
+| `tailwindcss` | `4.2` | Utility-first CSS |
+| `@supabase/supabase-js` | `2.103` | Database & Authentication |
+| `@radix-ui/*` | `latest` | Accessible UI primitives |
+| `lucide-react` | `0.575` | Icon system |
+| `react-hook-form` + `zod` | `7.71` / `3.24` | Form handling & validation |
+| `recharts` | `2.15` | Data visualization |
+| `sonner` | `2.0` | Toast notifications |
+| `embla-carousel-react` | `8.6` | Carousel / Slider |
+| `date-fns` | `4.1` | Date formatting |
+
+</details>
+
+<br />
+
+## 📂 Cấu trúc Dự án
+
+```
+quantum-ripples/
+│
+├── public/
+│   ├── favicon.svg              # Logo SVG (rounded avatar)
+│   └── images/                  # Static assets
+│
+├── src/
+│   ├── components/
+│   │   ├── SiteLayout.tsx       # Layout wrapper (Header + Content + Footer)
+│   │   ├── SiteHeader.tsx       # Navigation bar chính
+│   │   ├── SiteFooter.tsx       # Footer
+│   │   ├── ReadingProgress.tsx  # Thanh tiến trình đọc bài
+│   │   ├── PostCard.tsx         # Card hiển thị bài viết
+│   │   ├── PostListItem.tsx     # Danh sách bài viết dạng list
+│   │   ├── CommentSection.tsx   # Hệ thống bình luận
+│   │   └── ui/                  # Shadcn/Radix UI primitives
+│   │
+│   ├── hooks/
+│   │   ├── use-auth.tsx         # Authentication context & hooks
+│   │   └── use-mobile.tsx       # Responsive detection
+│   │
+│   ├── lib/
+│   │   ├── supabase.ts          # Supabase client khởi tạo
+│   │   ├── mock-data.ts         # Dữ liệu mẫu cho development
+│   │   └── utils.ts             # Utility functions (cn, ...)
+│   │
+│   ├── routes/
+│   │   ├── __root.tsx           # Root layout — fonts, meta, providers
+│   │   ├── index.tsx            # 🏠 Trang chủ — Hero + Featured posts
+│   │   ├── about.tsx            # 👤 Về tác giả
+│   │   ├── auth.tsx             # 🔐 Đăng nhập / Đăng ký
+│   │   ├── stream.tsx           # 🌊 Dòng chảy suy tưởng
+│   │   ├── profile.tsx          # 📋 Hồ sơ cá nhân
+│   │   ├── blog.tsx             # Layout cho blog section
+│   │   ├── blog.index.tsx       # 📚 Danh sách bài viết
+│   │   ├── blog.$slug.tsx       # 📖 Chi tiết bài viết (dynamic)
+│   │   ├── discussions.tsx      # Layout cho discussions
+│   │   ├── discussions.index.tsx# 💬 Danh sách thảo luận
+│   │   ├── discussions.$id.tsx  # 🗣️ Chi tiết thảo luận
+│   │   └── discussions.new.tsx  # ✏️ Tạo thảo luận mới
+│   │
+│   ├── styles.css               # Global styles & design tokens
+│   └── router.tsx               # Router configuration
+│
+├── .env                         # Environment variables (Supabase)
+├── vite.config.ts               # Vite + plugins config
+├── package.json
+├── tsconfig.json
+└── README.md                    # ← Bạn đang ở đây
+```
+
+<br />
+
+## 🚀 Bắt đầu
+
+### Yêu cầu
+
+- **Node.js** ≥ 18 (khuyến nghị v20+)
+- **npm** ≥ 9
+- Tài khoản [Supabase](https://supabase.com/) (miễn phí)
+
+### Cài đặt
+
 ```bash
+# 1. Clone repository
 git clone https://github.com/namvip55/quantum-ripples.git
 cd "Quantum Immortality"
-```
 
-Cài đặt tất cả các gói phụ thuộc (Dependencies):
-```bash
+# 2. Cài đặt dependencies
 npm install
+
+# 3. Tạo file .env
+cp .env.example .env
 ```
 
-Tạo file `.env` ở thư mục gốc của dự án và cấu hình Authentication + Database thông qua Supabase:
+Cấu hình Supabase trong file `.env`:
+
 ```env
-VITE_SUPABASE_URL=your_supabase_project_url
-VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+VITE_SUPABASE_URL=https://your-project.supabase.co
+VITE_SUPABASE_ANON_KEY=your_anon_key_here
 ```
 
-### 3. Khởi chạy Ứng dụng
-Khởi động máy chủ phát triển:
+### Chạy Development Server
+
 ```bash
 npm run dev
 ```
-Website sẽ được tải tại địa chỉ: `http://localhost:8080/` (Phụ thuộc vào cấu hình Vite hiện tại của bạn).
 
-## 📂 Tổ chức Cấu trúc (Project Architecture)
+Mở trình duyệt tại **http://localhost:8080** 🎉
 
-```text
-📦 Quantum Immortality
- ┣ 📂 public               # Chứa ảnh, tài sản tĩnh (assets)
- ┣ 📂 src
- ┃ ┣ 📂 components         # Các phần giao diện dùng chung (Navbar, Footer, Layout)
- ┃ ┃ ┗ 📂 ui               # UI Core tĩnh (Shadcn/Radix UI cơ bản)
- ┃ ┣ 📂 hooks              # Custom Hooks (VD: check trạng thái Auth, theme mobile)
- ┃ ┣ 📂 lib                # Hàm tiện ích dùng chung và khởi tạo kết nối Supabase
- ┃ ┣ 📂 routes             # Chứa toàn bộ logic các trang điều hướng (Tanstack file-based)
- ┃ ┃ ┣ 📜 __root.tsx       # Root layout - Khung tĩnh áp dụng cho cả project
- ┃ ┃ ┣ 📜 index.tsx        # Trang chủ: Dòng chảy sự sống (The Stream)
- ┃ ┃ ┗ 📜 about.tsx        # Thông tin cốt lõi
- ┃ ┣ 📜 index.css          # Quản lý lớp css hệ thống
- ┃ ┗ 📜 main.tsx           # Entry point của ứng dụng
- ┣ 📜 package.json         # Danh sách packages và scripts khởi chạy
- ┣ 📜 vite.config.ts       # Cấu hình Vite & plugins
- ┗ 📜 README.md            # Tài liệu dự án (File bạn đang đọc)
+### Build Production
+
+```bash
+npm run build
+npm run preview
 ```
 
-## 📜 Giấy phép (License)
-Dự án được tạo lập do niềm đam mê học thuật cá nhân. Mã nguồn mở tự do để tham khảo.
+<br />
+
+## 🗺️ Sitemap
+
+```
+/                     → Trang chủ (Hero + Bài nổi bật)
+/blog                 → Tất cả bài viết
+/blog/:slug           → Đọc bài viết chi tiết
+/stream               → Dòng chảy suy tưởng
+/discussions           → Không gian thảo luận
+/discussions/new       → Tạo chủ đề mới
+/discussions/:id       → Chi tiết thảo luận
+/about                → Về tác giả
+/auth                 → Đăng nhập / Đăng ký
+/profile              → Hồ sơ cá nhân
+```
+
+<br />
+
+## 🧑‍💻 Tác giả
+
+<table>
+  <tr>
+    <td align="center" width="200">
+      <img src="public/favicon.svg" width="80" height="80" alt="Avatar" />
+      <br />
+      <b>Nguyễn Nam Thành</b>
+      <br />
+      <sub>Người ghi chép · Việt Nam</sub>
+      <br /><br />
+      <a href="mailto:nguyennamthanhk6@gmail.com">📧 Email</a>
+      ·
+      <a href="https://github.com/namvip55">GitHub</a>
+    </td>
+  </tr>
+</table>
+
+> *"Tôi không phải nhà vật lý, cũng không phải thiền sư. Chỉ là một người tình cờ rơi vào ý niệm Bất tử lượng tử và kể từ đó không thể nhìn thế giới như cũ."*
+
+<br />
+
+## 📜 Giấy phép
+
+Dự án này được phát triển với mục đích học thuật và chia sẻ tri thức cá nhân.  
+Mã nguồn mở — tự do tham khảo, học hỏi và đóng góp.
+
+<br />
 
 ---
+
 <div align="center">
-  <p><em>"Trong dòng thời gian vô tận, mỗi chúng ta là một gợn sóng không bao giờ tan biến."</em></p>
+  <br />
+  <img src="public/favicon.svg" alt="ripple" width="40" height="40" />
+  <br /><br />
+  <i>「Trong dòng thời gian vô tận, mỗi chúng ta là một gợn sóng không bao giờ tan biến.」</i>
+  <br /><br />
+  <sub>Made with 🤍 and a quiet mind</sub>
 </div>
