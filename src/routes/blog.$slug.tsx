@@ -1,23 +1,27 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { ReadingProgress } from "@/components/ReadingProgress";
 import { posts, type ContentBlock } from "@/lib/mock-data";
 import { CommentSection } from "@/components/CommentSection";
+import { getBlogBySlug, type UserBlogWithAuthor } from "@/lib/blog-service";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 export const Route = createFileRoute("/blog/$slug")({
   loader: ({ params }) => {
     const post = posts.find((p) => p.slug === params.slug);
-    if (!post) throw notFound();
-    return post;
+    if (post) return { type: "static" as const, data: post };
+    // Nếu không tìm thấy trong mock-data, trả về slug để fetch từ Supabase
+    return { type: "dynamic" as const, slug: params.slug };
   },
   head: ({ loaderData }) => ({
-    meta: loaderData
+    meta: loaderData?.type === "static"
       ? [
-          { title: `${loaderData.title} — Ripples` },
-          { name: "description", content: loaderData.excerpt },
-          { property: "og:title", content: loaderData.title },
-          { property: "og:description", content: loaderData.excerpt },
+          { title: `${loaderData.data.title} — Ripples` },
+          { name: "description", content: loaderData.data.excerpt },
+          { property: "og:title", content: loaderData.data.title },
+          { property: "og:description", content: loaderData.data.excerpt },
         ]
       : [{ title: "Bài viết — Ripples" }],
   }),
@@ -103,7 +107,18 @@ function renderBlock(b: ContentBlock, i: number) {
 }
 
 function PostPage() {
-  const post = Route.useLoaderData();
+  const loaderData = Route.useLoaderData();
+
+  if (loaderData.type === "static") {
+    return <StaticPostPage post={loaderData.data} />;
+  }
+
+  return <DynamicPostPage slug={loaderData.slug} />;
+}
+
+// ─── Bài viết tĩnh (mock-data) ──────────────────────────────
+
+function StaticPostPage({ post }: { post: (typeof posts)[0] }) {
   const [focus, setFocus] = useState(false);
   const related = posts.find((p) => p.id !== post.id);
 
@@ -214,6 +229,131 @@ function PostPage() {
         )}
 
         {!focus && <CommentSection blogSlug={post.slug} />}
+      </article>
+    </SiteLayout>
+  );
+}
+
+// ─── Bài viết động (user blog từ Supabase) ──────────────────
+
+function DynamicPostPage({ slug }: { slug: string }) {
+  const [blog, setBlog] = useState<UserBlogWithAuthor | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [notFoundState, setNotFoundState] = useState(false);
+
+  useEffect(() => {
+    getBlogBySlug(slug)
+      .then((data) => {
+        if (!data) {
+          setNotFoundState(true);
+        } else {
+          setBlog(data);
+        }
+      })
+      .catch(() => setNotFoundState(true))
+      .finally(() => setLoading(false));
+  }, [slug]);
+
+  if (loading) {
+    return (
+      <SiteLayout>
+        <div className="mx-auto max-w-2xl px-6 py-24">
+          <div className="animate-pulse space-y-4">
+            <div className="h-6 w-32 rounded bg-muted" />
+            <div className="h-12 w-3/4 rounded bg-muted" />
+            <div className="h-px w-full bg-border my-8" />
+            <div className="space-y-3">
+              <div className="h-4 w-full rounded bg-muted" />
+              <div className="h-4 w-5/6 rounded bg-muted" />
+              <div className="h-4 w-4/6 rounded bg-muted" />
+            </div>
+          </div>
+        </div>
+      </SiteLayout>
+    );
+  }
+
+  if (notFoundState || !blog) {
+    return (
+      <SiteLayout>
+        <div className="mx-auto max-w-2xl px-6 py-32 text-center">
+          <h1 className="text-3xl font-bold">Không tìm thấy bài viết</h1>
+          <Link to="/blog" className="mt-6 inline-block text-sm text-accent hover:underline">
+            ← Quay về Blog
+          </Link>
+        </div>
+      </SiteLayout>
+    );
+  }
+
+  return (
+    <SiteLayout>
+      <ReadingProgress />
+      <article className="mx-auto max-w-2xl px-6 pt-12 pb-24 md:pt-16">
+        <Link
+          to="/blog"
+          className="mb-10 inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+        >
+          <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M19 12H5M11 18l-6-6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          Tất cả bài viết
+        </Link>
+
+        {/* Meta */}
+        <div className="mb-8 flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground p-1">
+          <span className="rounded-full border border-accent/20 bg-accent/5 px-3 py-1 text-[11px] text-accent">
+            {blog.category}
+          </span>
+          <time>{formatDate(blog.created_at)}</time>
+          <span aria-hidden>·</span>
+          <span>{blog.reading_time ?? "3 phút"} đọc</span>
+        </div>
+
+        {/* Cover image */}
+        {blog.cover_image_url && (
+          <img
+            src={blog.cover_image_url}
+            alt={blog.title}
+            className="mb-8 w-full rounded-2xl object-cover max-h-80"
+          />
+        )}
+
+        <h1 className="font-serif text-4xl font-bold leading-[1.15] text-foreground md:text-5xl lg:text-6xl text-pretty">
+          {blog.title}
+        </h1>
+
+        {/* Author info */}
+        {blog.profiles && (
+          <div className="mt-6 flex items-center gap-3">
+            {blog.profiles.avatar_url ? (
+              <img
+                src={blog.profiles.avatar_url}
+                alt=""
+                className="h-10 w-10 rounded-full object-cover border border-border"
+              />
+            ) : (
+              <div className="h-10 w-10 rounded-full bg-accent/20 flex items-center justify-center text-accent font-bold">
+                {(blog.profiles.username ?? blog.profiles.full_name ?? "U")[0].toUpperCase()}
+              </div>
+            )}
+            <div>
+              <p className="text-sm font-medium text-foreground">
+                {blog.profiles.full_name ?? blog.profiles.username ?? "Ẩn danh"}
+              </p>
+              <p className="text-xs text-muted-foreground">{formatDate(blog.created_at)}</p>
+            </div>
+          </div>
+        )}
+
+        <div className="my-12 h-px w-full bg-gradient-to-r from-transparent via-border to-transparent" />
+
+        {/* Markdown content */}
+        <div className="prose prose-invert prose-lg max-w-none prose-headings:font-serif prose-headings:tracking-tight prose-blockquote:border-accent prose-blockquote:bg-accent/5 prose-blockquote:py-2 prose-blockquote:font-serif prose-blockquote:italic prose-a:text-accent">
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>{blog.content}</ReactMarkdown>
+        </div>
+
+        <CommentSection blogSlug={blog.slug} />
       </article>
     </SiteLayout>
   );

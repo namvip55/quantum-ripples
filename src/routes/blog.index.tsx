@@ -1,8 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState, useEffect } from "react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { PostListItem } from "@/components/PostCard";
-import { categories, posts } from "@/lib/mock-data";
+import { categories, posts, type Post } from "@/lib/mock-data";
+import { getPublishedBlogs, type UserBlogWithAuthor } from "@/lib/blog-service";
 
 export const Route = createFileRoute("/blog/")({
   head: () => ({
@@ -19,10 +20,44 @@ export const Route = createFileRoute("/blog/")({
   component: BlogIndex,
 });
 
+/** Chuyển UserBlog → Post format để reuse PostListItem */
+function mapUserBlogToPost(blog: UserBlogWithAuthor): Post {
+  return {
+    id: `ub-${blog.id}`,
+    slug: blog.slug,
+    title: blog.title,
+    subtitle: undefined,
+    excerpt: blog.excerpt ?? "",
+    category: blog.category as Post["category"],
+    date: blog.created_at,
+    readingTime: blog.reading_time ?? "3 phút",
+    content: [], // Không cần cho danh sách
+    // Thêm metadata tác giả
+    _author: blog.profiles,
+    _isUserBlog: true,
+  } as Post & { _author?: any; _isUserBlog?: boolean };
+}
+
 function BlogIndex() {
-  // Filter UI-only. Replace với logic thật khi tích hợp backend.
   const [active, setActive] = useState<string>("Tất cả");
-  const visible = active === "Tất cả" ? posts : posts.filter((p) => p.category === active);
+  const [userBlogs, setUserBlogs] = useState<Post[]>([]);
+
+  // Fetch published user blogs
+  useEffect(() => {
+    getPublishedBlogs()
+      .then((blogs) => setUserBlogs(blogs.map(mapUserBlogToPost)))
+      .catch(() => {
+        /* Nếu lỗi, chỉ hiển thị mock-data */
+      });
+  }, []);
+
+  // Gộp mock-data + user blogs, sắp xếp theo ngày mới nhất
+  const allPosts = [...posts, ...userBlogs].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
+
+  const visible =
+    active === "Tất cả" ? allPosts : allPosts.filter((p) => p.category === active);
 
   return (
     <SiteLayout>

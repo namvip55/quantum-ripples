@@ -53,17 +53,25 @@ export function SiteHeader() {
           ))}
 
           {/* User Section */}
-          <div className="ml-4 pl-4 border-l border-border h-6 flex items-center">
+          <div className="ml-4 pl-4 border-l border-border h-6 flex items-center gap-3">
             {user ? (
-              <Link to="/profile" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-                {profile?.avatar_url ? (
-                  <img src={profile.avatar_url} alt="" className="w-6 h-6 rounded-full object-cover border border-border" />
-                ) : (
-                  <div className="w-6 h-6 rounded-full bg-accent text-[10px] font-bold text-accent-foreground flex justify-center items-center">
-                    {(profile?.username || user.email || "U")[0].toUpperCase()}
-                  </div>
-                )}
-              </Link>
+              <>
+                <Link
+                  to="/my-blog/new"
+                  className="rounded-lg bg-accent px-3 py-1.5 text-xs font-semibold text-accent-foreground transition-colors hover:bg-accent/90"
+                >
+                  ✏️ Viết bài
+                </Link>
+                <Link to="/profile" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+                  {profile?.avatar_url ? (
+                    <img src={profile.avatar_url} alt="" className="w-6 h-6 rounded-full object-cover border border-border" />
+                  ) : (
+                    <div className="w-6 h-6 rounded-full bg-accent text-[10px] font-bold text-accent-foreground flex justify-center items-center">
+                      {(profile?.username || user.email || "U")[0].toUpperCase()}
+                    </div>
+                  )}
+                </Link>
+              </>
             ) : (
               <Link to="/auth" className="text-sm font-medium text-accent hover:underline">
                 Đăng nhập
@@ -107,13 +115,29 @@ export function SiteHeader() {
             </Link>
           ))}
           {user ? (
-            <Link
-              to="/profile"
-              onClick={() => setOpen(false)}
-              className="block rounded-md px-3 py-2 text-sm font-medium text-accent hover:bg-secondary"
-            >
-              Tài khoản của tôi
-            </Link>
+            <>
+              <Link
+                to="/my-blog"
+                onClick={() => setOpen(false)}
+                className="block rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-secondary"
+              >
+                📝 Bài viết của tôi
+              </Link>
+              <Link
+                to="/my-blog/new"
+                onClick={() => setOpen(false)}
+                className="block rounded-md px-3 py-2 text-sm font-medium text-accent hover:bg-secondary"
+              >
+                ✏️ Viết bài mới
+              </Link>
+              <Link
+                to="/profile"
+                onClick={() => setOpen(false)}
+                className="block rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-secondary"
+              >
+                Tài khoản của tôi
+              </Link>
+            </>
           ) : (
             <Link
               to="/auth"

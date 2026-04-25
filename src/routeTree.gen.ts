@@ -11,16 +11,20 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as StreamRouteImport } from './routes/stream'
 import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as MyBlogRouteImport } from './routes/my-blog'
 import { Route as DiscussionsRouteImport } from './routes/discussions'
 import { Route as BlogRouteImport } from './routes/blog'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as MyBlogIndexRouteImport } from './routes/my-blog.index'
 import { Route as DiscussionsIndexRouteImport } from './routes/discussions.index'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as MyBlogNewRouteImport } from './routes/my-blog.new'
 import { Route as DiscussionsNewRouteImport } from './routes/discussions.new'
 import { Route as DiscussionsIdRouteImport } from './routes/discussions.$id'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as MyBlogEditIdRouteImport } from './routes/my-blog.edit.$id'
 
 const StreamRoute = StreamRouteImport.update({
   id: '/stream',
@@ -30,6 +34,11 @@ const StreamRoute = StreamRouteImport.update({
 const ProfileRoute = ProfileRouteImport.update({
   id: '/profile',
   path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MyBlogRoute = MyBlogRouteImport.update({
+  id: '/my-blog',
+  path: '/my-blog',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DiscussionsRoute = DiscussionsRouteImport.update({
@@ -57,6 +66,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MyBlogIndexRoute = MyBlogIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => MyBlogRoute,
+} as any)
 const DiscussionsIndexRoute = DiscussionsIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -66,6 +80,11 @@ const BlogIndexRoute = BlogIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => BlogRoute,
+} as any)
+const MyBlogNewRoute = MyBlogNewRouteImport.update({
+  id: '/new',
+  path: '/new',
+  getParentRoute: () => MyBlogRoute,
 } as any)
 const DiscussionsNewRoute = DiscussionsNewRouteImport.update({
   id: '/new',
@@ -82,6 +101,11 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => BlogRoute,
 } as any)
+const MyBlogEditIdRoute = MyBlogEditIdRouteImport.update({
+  id: '/edit/$id',
+  path: '/edit/$id',
+  getParentRoute: () => MyBlogRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -89,13 +113,17 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/blog': typeof BlogRouteWithChildren
   '/discussions': typeof DiscussionsRouteWithChildren
+  '/my-blog': typeof MyBlogRouteWithChildren
   '/profile': typeof ProfileRoute
   '/stream': typeof StreamRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/discussions/$id': typeof DiscussionsIdRoute
   '/discussions/new': typeof DiscussionsNewRoute
+  '/my-blog/new': typeof MyBlogNewRoute
   '/blog/': typeof BlogIndexRoute
   '/discussions/': typeof DiscussionsIndexRoute
+  '/my-blog/': typeof MyBlogIndexRoute
+  '/my-blog/edit/$id': typeof MyBlogEditIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -106,8 +134,11 @@ export interface FileRoutesByTo {
   '/blog/$slug': typeof BlogSlugRoute
   '/discussions/$id': typeof DiscussionsIdRoute
   '/discussions/new': typeof DiscussionsNewRoute
+  '/my-blog/new': typeof MyBlogNewRoute
   '/blog': typeof BlogIndexRoute
   '/discussions': typeof DiscussionsIndexRoute
+  '/my-blog': typeof MyBlogIndexRoute
+  '/my-blog/edit/$id': typeof MyBlogEditIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -116,13 +147,17 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/blog': typeof BlogRouteWithChildren
   '/discussions': typeof DiscussionsRouteWithChildren
+  '/my-blog': typeof MyBlogRouteWithChildren
   '/profile': typeof ProfileRoute
   '/stream': typeof StreamRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/discussions/$id': typeof DiscussionsIdRoute
   '/discussions/new': typeof DiscussionsNewRoute
+  '/my-blog/new': typeof MyBlogNewRoute
   '/blog/': typeof BlogIndexRoute
   '/discussions/': typeof DiscussionsIndexRoute
+  '/my-blog/': typeof MyBlogIndexRoute
+  '/my-blog/edit/$id': typeof MyBlogEditIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -132,13 +167,17 @@ export interface FileRouteTypes {
     | '/auth'
     | '/blog'
     | '/discussions'
+    | '/my-blog'
     | '/profile'
     | '/stream'
     | '/blog/$slug'
     | '/discussions/$id'
     | '/discussions/new'
+    | '/my-blog/new'
     | '/blog/'
     | '/discussions/'
+    | '/my-blog/'
+    | '/my-blog/edit/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -149,8 +188,11 @@ export interface FileRouteTypes {
     | '/blog/$slug'
     | '/discussions/$id'
     | '/discussions/new'
+    | '/my-blog/new'
     | '/blog'
     | '/discussions'
+    | '/my-blog'
+    | '/my-blog/edit/$id'
   id:
     | '__root__'
     | '/'
@@ -158,13 +200,17 @@ export interface FileRouteTypes {
     | '/auth'
     | '/blog'
     | '/discussions'
+    | '/my-blog'
     | '/profile'
     | '/stream'
     | '/blog/$slug'
     | '/discussions/$id'
     | '/discussions/new'
+    | '/my-blog/new'
     | '/blog/'
     | '/discussions/'
+    | '/my-blog/'
+    | '/my-blog/edit/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -173,6 +219,7 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   BlogRoute: typeof BlogRouteWithChildren
   DiscussionsRoute: typeof DiscussionsRouteWithChildren
+  MyBlogRoute: typeof MyBlogRouteWithChildren
   ProfileRoute: typeof ProfileRoute
   StreamRoute: typeof StreamRoute
 }
@@ -191,6 +238,13 @@ declare module '@tanstack/react-router' {
       path: '/profile'
       fullPath: '/profile'
       preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/my-blog': {
+      id: '/my-blog'
+      path: '/my-blog'
+      fullPath: '/my-blog'
+      preLoaderRoute: typeof MyBlogRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/discussions': {
@@ -228,6 +282,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/my-blog/': {
+      id: '/my-blog/'
+      path: '/'
+      fullPath: '/my-blog/'
+      preLoaderRoute: typeof MyBlogIndexRouteImport
+      parentRoute: typeof MyBlogRoute
+    }
     '/discussions/': {
       id: '/discussions/'
       path: '/'
@@ -241,6 +302,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/blog/'
       preLoaderRoute: typeof BlogIndexRouteImport
       parentRoute: typeof BlogRoute
+    }
+    '/my-blog/new': {
+      id: '/my-blog/new'
+      path: '/new'
+      fullPath: '/my-blog/new'
+      preLoaderRoute: typeof MyBlogNewRouteImport
+      parentRoute: typeof MyBlogRoute
     }
     '/discussions/new': {
       id: '/discussions/new'
@@ -262,6 +330,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/blog/$slug'
       preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof BlogRoute
+    }
+    '/my-blog/edit/$id': {
+      id: '/my-blog/edit/$id'
+      path: '/edit/$id'
+      fullPath: '/my-blog/edit/$id'
+      preLoaderRoute: typeof MyBlogEditIdRouteImport
+      parentRoute: typeof MyBlogRoute
     }
   }
 }
@@ -294,12 +369,28 @@ const DiscussionsRouteWithChildren = DiscussionsRoute._addFileChildren(
   DiscussionsRouteChildren,
 )
 
+interface MyBlogRouteChildren {
+  MyBlogNewRoute: typeof MyBlogNewRoute
+  MyBlogIndexRoute: typeof MyBlogIndexRoute
+  MyBlogEditIdRoute: typeof MyBlogEditIdRoute
+}
+
+const MyBlogRouteChildren: MyBlogRouteChildren = {
+  MyBlogNewRoute: MyBlogNewRoute,
+  MyBlogIndexRoute: MyBlogIndexRoute,
+  MyBlogEditIdRoute: MyBlogEditIdRoute,
+}
+
+const MyBlogRouteWithChildren =
+  MyBlogRoute._addFileChildren(MyBlogRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   AuthRoute: AuthRoute,
   BlogRoute: BlogRouteWithChildren,
   DiscussionsRoute: DiscussionsRouteWithChildren,
+  MyBlogRoute: MyBlogRouteWithChildren,
   ProfileRoute: ProfileRoute,
   StreamRoute: StreamRoute,
 }
